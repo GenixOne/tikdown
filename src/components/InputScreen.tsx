@@ -76,20 +76,28 @@ function InputScreen({ }: Props) {
     return (
         <div>
             <Toaster />
-            <div
-                id="form"
-                class="text-gray-600 h-14 border-[1px] border-blue-500 shadow-md rounded-lg flex items-center my-3"
-            >
-                <input
+
+
+
+            
+<form class="flex flex-1 items-center justify-center p-6">   
+    <label for="voice-search" class="sr-only">Search</label>
+    <div class="relative w-full">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+       
+        
+        </div>
+        <input
                     x-ref="input"
-                    placeholder="Enter Tiktok URL"
-                    class="bg-transparent text-m w-full pl-2 font-semibold h-full rounded-full text-sm focus:outline-none text-black"
+                    placeholder="Insert Tiktok URL"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required={true}
                     type="text"
                     onChange={(e) => setUrl(e.currentTarget.value)}
                     value={url()}
                 />
-                <button
+
+ <button aria-label="Paste"
                     onclick={async (e) => {
                         e.preventDefault();
 
@@ -106,17 +114,16 @@ function InputScreen({ }: Props) {
                             setUrl(text);
                         });
                     }}
-                    class="flex justify-center items-center p-2 border-[1px] text-xs font-semibold shadow-md mr-2 rounded-md dark:bg-blue-600 dark:text-white"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 60 58"
-                    class='fill-current dark:text-white'
-                    >
-                        <path d="M17.5 12h17c.8 0 1.5-.7 1.5-1.5V6c0-2.2-1.8-4-4-4H20c-2.2 0-4 1.8-4 4v4.5c0 .8.7 1.5 1.5 1.5z"></path>
-                        <path d="M44 6h-2.5c-.8 0-1.5.7-1.5 1.5V12c0 2.2-1.8 4-4 4H16c-2.2 0-4-1.8-4-4V7.5c0-.8-.7-1.5-1.5-1.5H8c-2.2 0-4 1.8-4 4v36c0 2.2 1.8 4 4 4h36c2.2 0 4-1.8 4-4V10c0-2.2-1.8-4-4-4zm-6 35c0 .6-.4 1-1 1H15c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1h22c.6 0 1 .4 1 1v2zm0-8c0 .6-.4 1-1 1H15c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1h22c.6 0 1 .4 1 1v2zm0-8c0 .6-.4 1-1 1H15c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1h22c.6 0 1 .4 1 1v2z"></path>
-                    </svg>
-                    Paste
+                    class="absolute inset-y-0 end-0 flex items-center pe-3 dark:text-white">
+                   <svg class="h-6 w-6 text-red-500"  width="14" height="14" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="8" y="8" width="12" height="12" rx="2" />  <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" /></svg>
+
                 </button>
-                <button
+        
+       
+    </div>
+
+
+    <button
                     onclick={(e) => {
                         e.preventDefault();
                         if (url() == '') {
@@ -131,12 +138,17 @@ function InputScreen({ }: Props) {
                             fetchData();
                         }
                     }}
-                    class="mr-2 p-1 bg-blue-600 shadow-md h-10 rounded text-white"
-                >
-                    <span class="px-1 flex items-center font-medium tracking-wide"> Download </span>
+                    class="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+       
+        <svg class="w-6 h-6 me-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7L12 14M12 14L15 11M12 14L9 11" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M16 17H12H8" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"></path> <path d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z" stroke="#ffffff" stroke-width="1.5"></path> </g></svg>
+        <span class="px-1 flex items-center font-medium tracking-wide"> Download </span>
                 </button>
-            </div>
+</form>
 
+
+            
+            
+            
             {loading() && <div class='flex justify-center'><svg
             class=" -ml-1 mr-3 h-10 w-10  text-center"
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="200" height="200" style="shape-rendering: auto; display: block; background: transparent;"><g><circle cx="84" cy="50" r="10" fill="#527eff">
@@ -156,43 +168,60 @@ function InputScreen({ }: Props) {
                     <animate attributeName="cx" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.75s" />
                 </circle><g /></g></svg></div>}
             {error() && <div>Error: {error()}</div>}
+            
+            
+            
+            
+            
+                                    <!-- Start of Result -->
+
             {data() && (
-                <div class='mt-2'>
+               <div class="sm:mt-6 lg:mt-8 mt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="my-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 flex gap-3 lg:flex-justify lg:flex flex-col lg:flex-row">
+	
                     <div>
-                        {data() && data()!.result.author && (
-                            <div class='flex justify-center flex-wrap'>
-                                <div class="relative">
-                                    <img crossorigin="anonymous" class="rounded-full h-32 w-32" src={data()!.result.author?.avatar ?? ""} alt={data()!.result.author.nickname ?? ""} /><a class="absolute bottom-0 right-0" href={`https://dl.vid3konline.workers.dev/api/download?url=${encodeURIComponent(data()!.result.author?.avatar ?? "")}&type=.png&title=${data()!.result.author?.nickname ?? ""}`}><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M7 17h10v-2H7zm5-3l4-4l-1.4-1.4l-1.6 1.55V6h-2v4.15L9.4 8.6L8 10zm0 8q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"></path></svg></a></div>
-                                <h1
-                                    class='text-2xl font-bold text-center w-full mt-2'
-                                >{data()!.result.author?.nickname}</h1>
-                            </div>
-                        )}
-                    </div>
+            {data() && data()!.result.author && (
+                <div class='flex justify-center flex-wrap'>
+                    <div class="relative">
+                        <img crossorigin="anonymous" class="rounded-full h-32 w-32" src={data()!.result.author?.avatar ?? ""} alt={data()!.result.author.nickname ?? ""} />
+							<a class="absolute bottom-0 right-0" href={`https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(data()!.result.author?.avatar ?? "")}&type=.png&title=${data()!.result.author?.nickname ?? ""}`}><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M7 17h10v-2H7zm5-3l4-4l-1.4-1.4l-1.6 1.55V6h-2v4.15L9.4 8.6L8 10zm0 8q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"></path></svg></a>
+					</div>
+                        <h1 class='text-2xl font-bold text-center w-full mt-2'>{data()!.result.author?.nickname}</h1>
+                </div>
+            )}
+        </div>
 
-                    <div>
-                        <video controls src={data()!.result.video1 ?? data()!.result.video_hd ?? data()!.result.video_watermark ?? ""}
-                            class=" rounded-md shadow-md my-3 w-3/4 mx-auto"
-                        ></video>
-                        <p
-                            class='text-center text-lg font-semibold mx-auto'
-                        >{data()!.result.desc}</p>
-
+                    <!--   Video Section     -->
+                    <div class="lg:inset-y-0 lg:right-0 lg:w-1/2 my-4">
+			            <video controls src={data()!.result.video1 ?? data()!.result.videoHD ?? data()!.result.videoWatermark ?? data()!.result.video_diyoun ?? ""} class=" rounded-md shadow-md h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"></video>
+                            <p class='text-center text-lg font-semibold mx-auto'>{data()!.result.desc}</p>
                     </div>
-                    <div class='flex flex-col justify-center gap-2 mt-2'>
-                        {data()!.result.video1 && <a href={`https://dl.vid3konline.workers.dev/api/download?url=${encodeURIComponent(data()!.result.video1 ?? "")}&type=.mp4&title=${data()!.result.author?.nickname}`} class="p-2 bg-blue-600 shadow-md h-10 rounded text-white">Download Video Low Without Watermaker</a>}
-                        {data()!.result.video_hd && <a href={`https://dl.vid3konline.workers.dev/api/download?url=${encodeURIComponent(data()!.result.video_hd ?? "")}&type=.mp4&title=${data()!.result.author?.nickname}`} class="p-2 bg-blue-600 shadow-md h-10 rounded text-white">Download Video HD Without Watermaker</a>}
-                        {data()!.result.video_watermark && <a href={`https://dl.vid3konline.workers.dev/api/download?url=${encodeURIComponent(data()!.result.video_watermark ?? "")}&type=.mp4&title=${data()!.result.author?.nickname}`} class="p-2 bg-blue-600 shadow-md h-10 rounded text-white">Download Video With Watermark</a>}
-                        {
-                            data()!.result.music &&
-                            <a href={`https://dl.vid3konline.workers.dev/api/download?url=${encodeURIComponent(data()!.result.music ?? "")}&type=.mp3&title=${data()!.result.author?.nickname ?? ""}`} class="p-2 bg-blue-600 shadow-md h-10 rounded text-white">Download Audio Only</a>
+                <!--   End of Video Section     -->
+            
+                <div class="sm:text-center lg:text-left">
 
-                        }
+                        <!-- Button Section -->
+                    <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+				        <div class='flex flex-col justify-center gap-2 mt-2 rounded-md shadow-md my-3 w-11/12 mx-auto'>
+                        {data()!.result.video1 && <a href={`https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(data()!.result.video1 ?? "")}&type=.mp4&title=${data()!.result.author?.nickname}`} class="p-2 bg-blue-600 shadow-md h-10 rounded text-white">Download Video Low Without Watermaker</a>}
+                        {data()!.result.videoHD && <a href={`https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(data()!.result.videoHD ?? "")}&type=.mp4&title=${data()!.result.author?.nickname}`} class="p-2 bg-blue-600 shadow-md h-10 rounded text-white">Download Video HD Without Watermaker</a>}
+                        {data()!.result.videoWatermark && <a href={`https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(data()!.result.videoWatermark ?? "")}&type=.mp4&title=${data()!.result.author?.nickname}`} class="p-2 bg-blue-600 shadow-md h-10 rounded text-white">Download Video With Watermark</a>}
+                        {data()!.result.music && <a href={`https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(data()!.result.music ?? "")}&type=.mp3&title=${data()!.result.author?.nickname ?? ""}`} class="p-2 bg-blue-600 shadow-md h-10 rounded text-white">Download Audio Only</a>}
+                        {data()!.result.video_diyoun && <a href={`https://dl.tiktokiocdn.workers.dev/api/download?url=${encodeURIComponent(data()!.result.video_diyoun ?? "")}&type=.mp4&title=${data()!.result.author?.nickname}`} class="p-2 bg-blue-600 shadow-md h-10 rounded text-white">Download Diyoun Video HD Without Watermaker</a>}
+                        </div>
                     </div>
+                        <!-- End of Button Section -->
+                </div>
 
 
                 </div>
             )}
+
+                        <!-- End of Result -->
+
+</div>
+              </div>      
         </div>
     )
 
