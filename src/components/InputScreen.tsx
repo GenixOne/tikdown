@@ -20,21 +20,21 @@ import { toast, Toaster } from "solid-toast";
 
 import { createEffect, createSignal, onCleanup } from "solid-js";
 type Props = {};
-interface TikTokData {
-  status: string | null;
-  result: {
+interface MusicalDownResponse {
+ status: string | null;
+  message?: string | null;
+  result?: {
     type: string | null;
-    author: {
-      avatar: string | null;
-      nickname: string | null;
-    };
-    desc: string | null;
-    videoSD: string | null;
-    videoHD: string | null;
-    video_hd: string | null;
-    videoWatermark: string | null;
-    music: string | null;
-  };
+    desc?: string | null;
+    author?: {
+      avatar?: string | null;
+      nickname?: string | null;
+    }
+    music?: string | null;
+    images?: string[]
+    videoHD?: string | null;
+    videoWatermark?: string | null;
+  }
 }
 
 function InputScreen({}: Props) {
@@ -358,13 +358,12 @@ function InputScreen({}: Props) {
           </div>
 
           <div>
+
             <video
               controls
               src={
-                data()!.result.videoSD ??
                 data()!.result.videoHD ??
                 data()!.result.videoWatermark ??
-                data()!.result.video_diyoun ??
                 data()!.result.music ??
                 ""
               }
